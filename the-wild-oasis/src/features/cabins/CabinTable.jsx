@@ -34,7 +34,7 @@ export default function CabinTable() {
     isPending,
     error,
   } = useQuery({
-    queryKey: ["cabin"],
+    queryKey: ["cabins"],
     queryFn: getCabins,
   });
 
