@@ -39,9 +39,9 @@ export default function App() {
             <Route path='users' element={<Users />} />
             <Route path='settings' element={<Settings />} />
             <Route path='account' element={<Account />} />
-            <Route path='login' element={<Login />} />
             <Route path='*' element={<PagenNotFound />} />
           </Route>
+          <Route path='login' element={<Login />} />
         </Routes>
       </BrowserRouter>
       <ReactQueryDevtools initialIsOpen={false} />
