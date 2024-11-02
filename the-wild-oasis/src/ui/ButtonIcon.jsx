@@ -1,14 +1,18 @@
 import styled from "styled-components";
 
 const ButtonIcon = styled.button`
-  background: none;
+  background-color: #de1010;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
   border: none;
   padding: 0.6rem;
   border-radius: var(--border-radius-sm);
   transition: all 0.2s;
 
   &:hover {
-    background-color: var(--color-grey-100);
+    background-color: #eb3636;
   }
 
   & svg {
