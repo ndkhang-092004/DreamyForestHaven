@@ -17,7 +17,7 @@ function Login() {
   return (
     <LoginLayout>
       <Logo />
-      <Heading as='h4'>For Administrator only!</Heading>
+      <Heading as='h4'>For Administrators only!</Heading>
       <LoginForm />
     </LoginLayout>
   );
