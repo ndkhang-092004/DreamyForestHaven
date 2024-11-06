@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const ButtonIcon = styled.button`
-  background-color: #de1010;
+  background-color: var(--color-grey-0);
   color: #fff;
   display: flex;
   align-items: center;
@@ -12,7 +12,7 @@ const ButtonIcon = styled.button`
   transition: all 0.2s;
 
   &:hover {
-    background-color: #eb3636;
+    background-color: #efeded;
   }
 
   & svg {

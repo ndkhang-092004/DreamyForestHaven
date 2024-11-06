@@ -12,8 +12,7 @@ export default function Logout() {
         <SpinnerMini />
       ) : (
         <>
-          <HiOutlineLogout color='white' />
-          Logout
+          <HiOutlineLogout />
         </>
       )}
     </ButtonIcon>
