@@ -5,7 +5,11 @@ import { createContext, useContext, useEffect } from "react";
 const DarkModeContext = createContext();
 
 function DarkModeProvider({ children }) {
-  const [isDarkMode, setIsDarkMode] = useLocalStorageState(false, "isDarkMode");
+  const [isDarkMode, setIsDarkMode] = useLocalStorageState(
+    window.matchMedia("(prefers-color-scheme:dark)").matches,
+    "isDarkMode"
+  );
+  //window.matchMedia("(prefers-color-scheme:dark)").matches -> Xác định default theme của browser
 
   useEffect(
     function () {
