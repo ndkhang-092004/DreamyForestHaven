@@ -1,12 +1,21 @@
 import styled from "styled-components";
+import Heading from "../../ui/Heading";
+import {
+  Cell,
+  Legend,
+  Pie,
+  PieChart,
+  ResponsiveContainer,
+  Tooltip,
+} from "recharts";
+import { useDarkMode } from "../../context/DarkModeContext";
 
 const ChartBox = styled.div`
-  /* Box */
   background-color: var(--color-grey-0);
   border: 1px solid var(--color-grey-100);
   border-radius: var(--border-radius-md);
 
-  padding: 2.4rem 3.2rem;
+  padding: 2rem 3.2rem;
   grid-column: 3 / span 2;
 
   & > *:first-child {
@@ -21,42 +30,42 @@ const ChartBox = styled.div`
 const startDataLight = [
   {
     duration: "1 night",
-    value: 0,
+    value: 2,
     color: "#ef4444",
   },
   {
     duration: "2 nights",
-    value: 0,
+    value: 4,
     color: "#f97316",
   },
   {
     duration: "3 nights",
-    value: 0,
+    value: 8,
     color: "#eab308",
   },
   {
     duration: "4-5 nights",
-    value: 0,
+    value: 6,
     color: "#84cc16",
   },
   {
     duration: "6-7 nights",
-    value: 0,
+    value: 2,
     color: "#22c55e",
   },
   {
     duration: "8-14 nights",
-    value: 0,
+    value: 2,
     color: "#14b8a6",
   },
   {
     duration: "15-21 nights",
-    value: 0,
+    value: 1,
     color: "#3b82f6",
   },
   {
     duration: "21+ nights",
-    value: 0,
+    value: 3,
     color: "#a855f7",
   },
 ];
@@ -105,8 +114,6 @@ const startDataDark = [
 ];
 
 function prepareData(startData, stays) {
-  // A bit ugly code, but sometimes this is what it takes when working with real data 😅
-
   function incArrayValue(arr, field) {
     return arr.map((obj) =>
       obj.duration === field ? { ...obj, value: obj.value + 1 } : obj
@@ -129,4 +136,35 @@ function prepareData(startData, stays) {
     .filter((obj) => obj.value > 0);
 
   return data;
+}
+
+export default function DurationChart({ confirmedStays }) {
+  const { isDarkMode } = useDarkMode();
+  const startData = isDarkMode ? startDataDark : startDataLight;
+  const data = prepareData(startData, confirmedStays);
+
+  return (
+    <ChartBox>
+      <Heading as='h2'>Stay Duration</Heading>
+      <ResponsiveContainer width='100%'>
+        <PieChart>
+          <Pie data={data} nameKey='duration' dataKey='value' cy='40%'>
+            {data.map((data) => (
+              <Cell key={data.duration} fill={data.color} stroke={data.color} />
+            ))}
+          </Pie>
+          <Tooltip />
+          <Legend
+            verticalAlign='middle'
+            align='right'
+            width='30%'
+            height='85%'
+            layout='vertical'
+            iconSize={15}
+            iconType='triangle'
+          />
+        </PieChart>
+      </ResponsiveContainer>
+    </ChartBox>
+  );
 }
