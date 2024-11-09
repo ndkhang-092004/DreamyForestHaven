@@ -8,6 +8,7 @@ const StyledLogo = styled.div`
 const Img = styled.img`
   height: 9.6rem;
   width: auto;
+  object-fit: contain;
 `;
 
 function Logo() {

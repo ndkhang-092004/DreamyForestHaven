@@ -26,7 +26,6 @@ const StyledCheckbox = styled.div`
   }
 `;
 
-//Thử thêm để deploy
 function CheckBox({ checked, onChange, disabled = false, id, children }) {
   return (
     <StyledCheckbox>
