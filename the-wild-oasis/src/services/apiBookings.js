@@ -53,7 +53,7 @@ export async function getBookingsAfterDate(date) {
     .gte("startDate", date)
     .lte("startDate", getToday({ end: true }));
   //created_at đang gây ra bug khi tạo ra booking với date khác xa so với created_at khiến cho dữ liệu dashboard không được chuẩn
-  //--> Cần fix khi hoàn thành
+  //--> Cần fix khi hoàn thành -> Done
 
   if (error) {
     console.error(error);
