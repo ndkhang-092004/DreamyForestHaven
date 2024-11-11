@@ -1,5 +1,7 @@
 import supabase, { supabaseUrl } from "./supabase";
 
+//Việc sử dụng signup từ supabase khiến cho khi ta đăng ký một user mới thì dẫn tới chúng ta đăng nhập vào tài khoản đó luôn...
+//Đang tìm cách fix
 export async function signup({ fullName, email, password }) {
   const { data, error } = await supabase.auth.signUp({
     email,

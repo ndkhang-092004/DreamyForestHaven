@@ -5,6 +5,21 @@ import Input from "../../ui/Input";
 import FormRowVertical from "../../ui/FormRowVertical";
 import useLogin from "./useLogin";
 import SpinnerMini from "../../ui/SpinnerMini";
+import styled from "styled-components";
+
+const StyledText = styled.p`
+  text-align: center;
+`;
+
+const StyledSpan = styled.span`
+  color: #efed74;
+  cursor: pointer;
+  text-decoration: underline;
+
+  &:hover {
+    color: #c2c20a;
+  }
+`;
 
 function LoginForm() {
   const [email, setEmail] = useState("");
@@ -23,6 +38,11 @@ function LoginForm() {
         },
       }
     );
+  }
+
+  function getTestingAccount() {
+    setEmail("tester@gmail.com");
+    setPassword("password");
   }
 
   return (
@@ -52,6 +72,11 @@ function LoginForm() {
           {isLogin ? <SpinnerMini /> : "Login"}
         </Button>
       </FormRowVertical>
+      <StyledText>
+        For testing purpose, please{" "}
+        <StyledSpan onClick={getTestingAccount}>click here</StyledSpan> to get
+        account!
+      </StyledText>
     </Form>
   );
 }
